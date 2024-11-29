@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_2/models/data_model.dart';
-import 'package:flutter_app_2/utils/api_client.dart';
- 
+//import 'package:flutter_app_2/utils/api_client.dart';
 
 class DataScreen extends StatefulWidget {
   @override
@@ -10,13 +9,13 @@ class DataScreen extends StatefulWidget {
 
 class _DataScreenState extends State<DataScreen> {
   late Future<List<DataModel>> futureData;
-  late ApiClient apiClient; // Create an instance of ApiClient
+  late ApiClient apiClient;
 
   @override
   void initState() {
     super.initState();
     apiClient = ApiClient(); // Initialize the instance
-    futureData = apiClient.fetchData(); 
+    futureData = apiClient.fetchData();
   }
 
   @override
@@ -37,8 +36,8 @@ class _DataScreenState extends State<DataScreen> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(snapshot.data![index].title),
-                  subtitle: Text(snapshot.data![index].content),
+                  title: Text(snapshot.data![index].name),
+                  subtitle: Text(snapshot.data![index].email),
                 );
               },
             );
